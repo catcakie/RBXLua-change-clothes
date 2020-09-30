@@ -1,6 +1,6 @@
 local ReplicatedStorage = game:GetService("ReplicatedStorage")
 local InsertService = game:GetService("InsertService")
-local remoteEvent = ReplicatedStorage:WaitForChild("changeClothes")
+local remoteEvent = ReplicatedStorage:WaitForChild("ChangeClothesEvent")
 
 function changeShirtOrPants(character, userInput, clothingType)
 	local inputTemplate = InsertService:LoadAsset(userInput):GetChildren()[1][clothingType.."Template"]
