@@ -1,24 +1,34 @@
 local ReplicatedStorage = game:GetService("ReplicatedStorage")
 local remoteEvent = ReplicatedStorage:WaitForChild("ChangeClothesEvent")
 
-local TryItemsGUI = script.Parent
+local GUI = script.Parent
 
-TryItemsGUI.FaceEnter.MouseButton1Down:connect(function()
-	local userInput = TryItemsGUI.FaceBox.Text
+local faceTextboxName = "FaceBox"
+local shirtTextboxName = "ShirtBox"
+local tshirtTextboxName = "TShirtBox"
+local pantsTextboxName = "PantsBox"
+
+local faceButtonName = "FaceEnter"
+local shirtButtonName = "ShirtEnter"
+local tshirtButtonName = "TShirtEnter"
+local pantsButtonName = "PantsEnter"
+
+GUI[faceButtonName].MouseButton1Down:connect(function()
+	local userInput = GUI[faceTextboxName].Text
 	remoteEvent:FireServer(userInput, "Face")
 end)
 
-TryItemsGUI.ShirtEnter.MouseButton1Down:connect(function()
-	local userInput = TryItemsGUI.ShirtBox.Text
+GUI[shirtButtonName].MouseButton1Down:connect(function()
+	local userInput = GUI[shirtTextboxName].Text
 	remoteEvent:FireServer(userInput, "Shirt")
 end)
 
-TryItemsGUI.TShirtEnter.MouseButton1Down:connect(function()
-	local userInput = TryItemsGUI.TShirtBox.Text
+GUI[tshirtButtonName].MouseButton1Down:connect(function()
+	local userInput = GUI[tshirtTextboxName].Text
 	remoteEvent:FireServer(userInput, "Shirt Graphic")
 end)
 
-TryItemsGUI.PantsEnter.MouseButton1Down:connect(function()
-	local userInput = TryItemsGUI.PantsBox.Text
+GUI[pantsButtonName].MouseButton1Down:connect(function()
+	local userInput = GUI[pantsTextboxName].Text
 	remoteEvent:FireServer(userInput, "Pants")
 end)
