@@ -1,5 +1,5 @@
 local ReplicatedStorage = game:GetService("ReplicatedStorage")
-local remoteEvent = ReplicatedStorage:WaitForChild("changeClothes")
+local remoteEvent = ReplicatedStorage:WaitForChild("ChangeClothesEvent")
 
 local TryItemsGUI = script.Parent
 
