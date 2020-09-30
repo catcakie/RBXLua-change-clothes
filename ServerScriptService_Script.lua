@@ -3,22 +3,25 @@ local InsertService = game:GetService("InsertService")
 local remoteEvent = ReplicatedStorage:WaitForChild("ChangeClothesEvent")
 
 function changeShirtOrPants(character, userInput, clothingType)
-	local inputTemplate = InsertService:LoadAsset(userInput):GetChildren()[1][clothingType.."Template"]
+	local existingPlayerClothing = character:FindFirstChild(clothingType)
+	local templateType = clothingType.."Template"
+	local inputTemplate = InsertService:LoadAsset(userInput):GetChildren()[1][templateType]
 	
-	if character:FindFirstChild(clothingType) then
-		character:FindFirstChild(clothingType)[clothingType.."Template"] = inputTemplate
+	if existingPlayerClothing then
+		existingPlayerClothing[templateType] = inputTemplate
 	else
 		local newClothing = Instance.new(clothingType)
-		newClothing[clothingType.."Template"] = inputTemplate
+		newClothing[templateType] = inputTemplate
 		newClothing.Parent = character
 	end
 end
 
 function changeShirtGraphic(character, userInput)
+	local existingPlayerShirtGraphic = character:FindFirstChild("Shirt Graphic")
 	local inputShirtGraphic = InsertService:LoadAsset(userInput):GetChildren()[1].Graphic
 	
-	if character:FindFirstChild("Shirt Graphic") then
-		character:FindFirstChild("Shirt Graphic").Graphic = inputShirtGraphic
+	if existingPlayerShirtGraphic then
+		existingPlayerShirtGraphic.Graphic = inputShirtGraphic
 	else
 		local newTShirt = Instance.new("ShirtGraphic")
 		newTShirt.Graphic = inputShirtGraphic
@@ -27,9 +30,10 @@ function changeShirtGraphic(character, userInput)
 end
 
 function changeFace(character, userInput)
+	local existingPlayerHead = character:FindFirstChild("Head")
 	local inputFaceTexture = InsertService:LoadAsset(userInput):GetChildren()[1].Texture
 	
-	character:FindFirstChild("Head").face.Texture = inputFaceTexture
+	existingPlayerHead.face.Texture = inputFaceTexture
 end
 
 function onButtonClick(player, userInput, clothingType)
