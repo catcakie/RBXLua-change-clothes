@@ -38,19 +38,15 @@ function onButtonClick(player, userInput, clothingType)
 	if clothingType == "Face" then
 		changeFace(character, userInput)
 	end
-	
 	if clothingType == "Shirt" then
 		changeShirtOrPants(character, userInput, "Shirt")
 	end
-	
 	if clothingType == "Shirt Graphic" then
 		changeShirtGraphic(character, userInput)
 	end
-	
 	if clothingType == "Pants" then
 		changeShirtOrPants(character, userInput, "Pants")
 	end
 end
 
 remoteEvent.OnServerEvent:Connect(onButtonClick)
-
